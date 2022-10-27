@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/pages/signup.page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -63,7 +64,14 @@ class LoginPage extends StatelessWidget {
                                 color: Colors.black,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignupPage(),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
