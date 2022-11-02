@@ -16,9 +16,58 @@ class CartPage extends StatelessWidget {
             ),
           ),
           Container(
-            color: Colors.yellow,
+            color: Colors.black12,
             height: 80,
-            child: const Text("Container 1"),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 20.0,
+                    left: 20.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text("TOTAL"),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        "\$250",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 50,
+                  width: 150,
+                  margin: const EdgeInsets.only(
+                    right: 20,
+                  ),
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
+                  ),
+                  child: TextButton(
+                    child: const Text(
+                      "Checkout",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
