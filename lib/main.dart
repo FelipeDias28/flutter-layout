@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/pages/login.page.dart';
+import 'package:shopping/pages/cart.page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: LoginPage(),
+      body: CartPage(),
     );
   }
 }
