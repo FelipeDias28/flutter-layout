@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/pages/cart.page.dart';
+import 'package:shopping/pages/tabs.page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,18 +16,26 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const DefaultTabController(
+        // Utilizado para trabalhar com tabs
+        length: 3, // Quantidade de tabs
+        child: TabsPage(), // qual página deve chamar
+      ),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+// class HomePage extends StatelessWidget {
+//   const HomePage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: CartPage(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Scaffold(
+//       body: DefaultTabController(
+//         // Utilizado para trabalhar com tabs
+//         length: 3, // Quantidade de tabs
+//         child: TabsPage(), // qual página deve chamar
+//       ),
+//     );
+//   }
+// }
