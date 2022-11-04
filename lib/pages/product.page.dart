@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
-  const ProductPage({super.key});
+  final String image;
+  final String title;
+
+  const ProductPage({
+    super.key,
+    required this.image,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,7 @@ class ProductPage extends StatelessWidget {
                 // Faz o efeito sanfona, diminuindo e aumentando
                 centerTitle: true,
                 background: Image.asset(
-                  "assets/product-10.png",
+                  image,
                   width: double.infinity,
                   fit: BoxFit.fitWidth,
                 ),
@@ -30,25 +37,25 @@ class ProductPage extends StatelessWidget {
           ];
         },
         body: ListView(
-          children: const [
+          children: [
             Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 left: 10,
                 right: 10.0,
               ),
               child: Text(
-                "Dry Fit Long Sleeve",
-                style: TextStyle(
+                title,
+                style: const TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(10),
               child: Text("by Nike"),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(10),
               child: Text(
                 "Details",
@@ -58,7 +65,7 @@ class ProductPage extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(10),
               child: Text(
                   "Nike Dri-FIT ia a polyester fabric designed to help you keep dry so you can more comfortably work harder, longer"),

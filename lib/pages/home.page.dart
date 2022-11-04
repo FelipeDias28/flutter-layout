@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping/widgets/category/category-list.widget.dart';
-import 'package:shopping/widgets/product/product-card.widget.dart';
+import 'package:shopping/widgets/product/product-list.widget.dart';
 import 'package:shopping/widgets/search-box.widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -61,48 +61,13 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            SizedBox(
+            const SizedBox(
               height: 300,
-              child: productList(context),
+              child: ProductList(),
             ),
           ],
         ),
       ),
     );
   }
-}
-
-Widget productList(BuildContext context) {
-  return SizedBox(
-    width: 70,
-    child: ListView(
-      scrollDirection: Axis.horizontal, // Altera a direção do scrool
-      children: const [
-        ProductCard(
-          image: "assets/product-10.png",
-          title: "Nike Dry-Fit Long Sleeve",
-          description: "Nike",
-          price: 150,
-        ),
-        ProductCard(
-          image: "assets/product-1.png",
-          title: "BeopPlay Speaker",
-          description: "Bang and Olufsen",
-          price: 755,
-        ),
-        ProductCard(
-          image: "assets/product-2.png",
-          title: "Leather Wristwatch",
-          description: "Tag Heuer",
-          price: 450,
-        ),
-        ProductCard(
-          image: "assets/product-3.png",
-          title: "Smart Bluetooth Speaker",
-          description: "Google Inc",
-          price: 450,
-        ),
-      ],
-    ),
-  );
 }
