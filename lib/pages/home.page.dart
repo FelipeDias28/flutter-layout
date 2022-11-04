@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/pages/product.page.dart';
 import 'package:shopping/widgets/category/category-list.widget.dart';
+import 'package:shopping/widgets/product/product-card.widget.dart';
 import 'package:shopping/widgets/search-box.widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -77,76 +77,30 @@ Widget productList(BuildContext context) {
     width: 70,
     child: ListView(
       scrollDirection: Axis.horizontal, // Altera a direção do scrool
-      children: [
-        productItem(context),
-        productItem(context),
-        productItem(context),
-        productItem(context),
-        productItem(context),
-        productItem(context),
-        productItem(context),
-      ],
-    ),
-  );
-}
-
-Widget productItem(BuildContext context) {
-  return Container(
-    padding: const EdgeInsets.all(10),
-    margin: const EdgeInsets.all(5),
-    width: 170,
-    color: Colors.black12,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        GestureDetector(
-          // Esse Widget pode ser utilizado em qualquer lugar para realizar uma ação
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ProductPage(),
-              ),
-            );
-          },
-          child: Image.asset(
-            "assets/product-1.png",
-            width: 170, // Sempre o mesmo do container
-            height: 150,
-            fit: BoxFit
-                .cover, // Expande a imagem até a largura e altura cobrir 100% da imagem
-          ),
+      children: const [
+        ProductCard(
+          image: "assets/product-10.png",
+          title: "Nike Dry-Fit Long Sleeve",
+          description: "Nike",
+          price: 150,
         ),
-        const SizedBox(
-          height: 10,
+        ProductCard(
+          image: "assets/product-1.png",
+          title: "BeopPlay Speaker",
+          description: "Bang and Olufsen",
+          price: 755,
         ),
-        const SizedBox(
-          height: 50,
-          child: Text(
-            "Titulo do Produto",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w300,
-            ),
-          ),
+        ProductCard(
+          image: "assets/product-2.png",
+          title: "Leather Wristwatch",
+          description: "Tag Heuer",
+          price: 450,
         ),
-        const Text(
-          "Marca",
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        const Text(
-          "\$ 200",
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF00C569),
-          ),
+        ProductCard(
+          image: "assets/product-3.png",
+          title: "Smart Bluetooth Speaker",
+          description: "Google Inc",
+          price: 450,
         ),
       ],
     ),
