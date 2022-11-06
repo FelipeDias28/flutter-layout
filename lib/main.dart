@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping/pages/tabs.page.dart';
+import 'package:shopping/themes/light.theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: lightTheme(),
       home: const DefaultTabController(
         // Utilizado para trabalhar com tabs
         length: 3, // Quantidade de tabs
@@ -24,18 +23,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class HomePage extends StatelessWidget {
-//   const HomePage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold(
-//       body: DefaultTabController(
-//         // Utilizado para trabalhar com tabs
-//         length: 3, // Quantidade de tabs
-//         child: TabsPage(), // qual página deve chamar
-//       ),
-//     );
-//   }
-// }
