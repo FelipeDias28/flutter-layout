@@ -10,7 +10,6 @@ class LoginPage extends StatelessWidget {
       // Faz com que o teclado suba na frente da tela
       body: SingleChildScrollView(
         child: Container(
-          color: const Color(0xFFF5F5F5),
           padding: const EdgeInsets.only(
             top: 80,
             left: 20,
@@ -21,9 +20,10 @@ class LoginPage extends StatelessWidget {
             children: [
               Container(
                 height: 450,
-                decoration: const BoxDecoration(
-                  color: Colors.white, // Cor do fundo do container
-                  boxShadow: [
+                decoration: BoxDecoration(
+                  color: Theme.of(context)
+                      .accentColor, // Cor do fundo do container
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black12,
                       offset: Offset(1, 2.0), // quantidade de sombra, projeção
@@ -44,24 +44,23 @@ class LoginPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
-                            children: const [
+                            children: [
                               Text(
                                 "Welcome",
-                                style: TextStyle(
-                                  // Estilização dos textos
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                style: Theme.of(context).textTheme.headline4,
                               ),
-                              Text("Sign in to continue"),
+                              Text(
+                                "Sign in to continue",
+                                style: Theme.of(context).textTheme.subtitle1,
+                              ),
                             ],
                           ),
                           TextButton(
                             // Botão sem borda
-                            child: const Text(
+                            child: Text(
                               "Sign Up",
                               style: TextStyle(
-                                color: Colors.black,
+                                color: Theme.of(context).primaryColor,
                               ),
                             ),
                             onPressed: () {
@@ -80,19 +79,20 @@ class LoginPage extends StatelessWidget {
                         height: 45.0,
                       ),
                       TextFormField(
-                        autofocus: true, // já abre a página selecionado
+                        // autofocus: true, // já abre a página selecionado
                         keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           // decorações do input
                           labelText: "Email",
                           labelStyle: TextStyle(
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.w400,
                             fontSize: 16.0,
                           ),
                         ),
-                        style: const TextStyle(
+                        style: TextStyle(
                           // estilo do texto dentro do input, o que o usuário digita
+                          color: Theme.of(context).primaryColor,
                           fontSize: 20,
                         ),
                       ),
@@ -103,15 +103,16 @@ class LoginPage extends StatelessWidget {
                       TextFormField(
                         keyboardType: TextInputType.text,
                         obscureText: true, // deixa a senha escondida
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: "Password",
                           labelStyle: TextStyle(
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.w400,
                             fontSize: 16.0,
                           ),
                         ),
-                        style: const TextStyle(
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
                           fontSize: 20,
                         ),
                       ),
@@ -121,10 +122,10 @@ class LoginPage extends StatelessWidget {
                         height: 40,
                         child: TextButton(
                           onPressed: () {},
-                          child: const Text(
+                          child: Text(
                             "Forgot your password?",
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
                         ),
@@ -134,9 +135,9 @@ class LoginPage extends StatelessWidget {
                       ),
                       Container(
                         width: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.all(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: const BorderRadius.all(
                             Radius.circular(5),
                           ),
                         ),
@@ -173,7 +174,7 @@ class LoginPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 2.0, // espessura da borda
-                    color: Colors.blue,
+                    color: Theme.of(context).primaryColor,
                   ),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(5),
@@ -205,7 +206,7 @@ class LoginPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 2.0, // espessura da borda
-                    color: Colors.blue,
+                    color: Theme.of(context).primaryColor,
                   ),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(5),

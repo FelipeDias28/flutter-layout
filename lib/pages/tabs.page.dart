@@ -14,8 +14,8 @@ class TabsPage extends StatefulWidget {
 class _TabsPageState extends State<TabsPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: TabBarView(
+    return Scaffold(
+      body: const TabBarView(
         children: [
           HomePage(),
           CartPage(),
@@ -23,7 +23,7 @@ class _TabsPageState extends State<TabsPage> {
         ],
       ),
       bottomNavigationBar: TabBar(
-        tabs: [
+        tabs: const [
           Tab(
             icon: Icon(Icons.home),
           ),
@@ -34,11 +34,11 @@ class _TabsPageState extends State<TabsPage> {
             icon: Icon(Icons.perm_identity),
           ),
         ],
-        labelColor: Colors.blue,
+        labelColor: Theme.of(context).primaryColor,
         unselectedLabelColor: Colors.black38, // O ícone não selecionado
         indicatorSize: TabBarIndicatorSize.label, // O indicador do selecionado
-        indicatorPadding: EdgeInsets.all(5.0),
-        indicatorColor: Colors.blue,
+        indicatorPadding: const EdgeInsets.all(5.0),
+        indicatorColor: Theme.of(context).primaryColor,
       ),
     );
   }

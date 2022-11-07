@@ -11,5 +11,11 @@ ThemeData lightTheme() {
     brightness: brightness,
     primaryColor: primaryColor,
     accentColor: Colors.white,
+    textTheme: const TextTheme(
+      // Tema geral
+      bodyText1: TextStyle(color: Colors.red),
+      button: TextStyle(color: Colors.green),
+      // headline5: TextStyle(color: Colors.deepPurple), // Possui valor semântico
+    ),
   );
 }
