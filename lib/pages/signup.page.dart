@@ -9,12 +9,14 @@ class SignupPage extends StatelessWidget {
       appBar: // Somente a App BAr, permite que tenha a opção de voltar a página anterior
           AppBar(
         backgroundColor: Colors.white.withOpacity(0),
+        iconTheme: IconThemeData(
+          color: Theme.of(context).primaryColor,
+        ),
         elevation:
             0, // O quão elevado da tela, parece que esta mais próximo do usuário
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: const Color(0xFFF5F5F5),
           padding: const EdgeInsets.only(
             top: 80,
             left: 20,
@@ -44,23 +46,20 @@ class SignupPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const Text(
+                      Text(
                         "Signup",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: Theme.of(context).textTheme.headline4,
                       ),
                       const SizedBox(
                         height: 45.0,
                       ),
                       TextFormField(
                         keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: "Name",
                           labelStyle: TextStyle(
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.w400,
                             fontSize: 16.0,
                           ),
@@ -74,10 +73,10 @@ class SignupPage extends StatelessWidget {
                       ),
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: "Email",
                           labelStyle: TextStyle(
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.w400,
                             fontSize: 16.0,
                           ),
@@ -92,10 +91,10 @@ class SignupPage extends StatelessWidget {
                       TextFormField(
                         keyboardType: TextInputType.text,
                         obscureText: true,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: "Password",
                           labelStyle: TextStyle(
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.w400,
                             fontSize: 16.0,
                           ),
@@ -109,9 +108,9 @@ class SignupPage extends StatelessWidget {
                       ),
                       Container(
                         width: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.all(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: const BorderRadius.all(
                             Radius.circular(5),
                           ),
                         ),
