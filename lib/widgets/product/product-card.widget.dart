@@ -71,10 +71,10 @@ class ProductCard extends StatelessWidget {
           ),
           Text(
             "\$ $price", // Não precisa dos colchetes pois não esta fazendo nenhuma operação, somente mostra o valor
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF00C569),
+              color: Theme.of(context).primaryColor,
             ),
           ),
         ],

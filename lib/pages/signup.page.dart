@@ -27,7 +27,6 @@ class SignupPage extends StatelessWidget {
             children: [
               Container(
                 decoration: const BoxDecoration(
-                  color: Colors.white, // Cor do fundo do container
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black12,
