@@ -15,10 +15,10 @@ class _TabsPageState extends State<TabsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const TabBarView(
+      body: TabBarView(
         children: [
-          HomePage(),
-          CartPage(),
+          const HomePage(),
+          const CartPage(),
           LoginPage(),
         ],
       ),

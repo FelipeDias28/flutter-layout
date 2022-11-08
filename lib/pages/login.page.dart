@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:shopping/pages/signup.page.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  final _formKey = GlobalKey<FormState>();
+  String? _email;
+  String? _password;
+
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,7 @@ class LoginPage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 450,
+                height: 460,
                 decoration: BoxDecoration(
                   color: Theme.of(context)
                       .accentColor, // Cor do fundo do container
@@ -38,120 +42,156 @@ class LoginPage extends StatelessWidget {
                     right: 16.0,
                     top: 70.0,
                   ),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            children: [
-                              Text(
-                                "Welcome",
-                                style: Theme.of(context).textTheme.headline4,
+                  child: Form(
+                    // Criação dos formulários
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  "Welcome",
+                                  style: Theme.of(context).textTheme.headline4,
+                                ),
+                                Text(
+                                  "Sign in to continue",
+                                  style: Theme.of(context).textTheme.subtitle1,
+                                ),
+                              ],
+                            ),
+                            TextButton(
+                              // Botão sem borda
+                              child: Text(
+                                "Sign Up",
+                                style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                ),
                               ),
-                              Text(
-                                "Sign in to continue",
-                                style: Theme.of(context).textTheme.subtitle1,
-                              ),
-                            ],
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignupPage(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          // Somente para espaçamento entre os itens
+                          height: 45.0,
+                        ),
+                        TextFormField(
+                          // autofocus: true, // já abre a página selecionado
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            // decorações do input
+                            labelText: "Email",
+                            labelStyle: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16.0,
+                            ),
                           ),
-                          TextButton(
-                            // Botão sem borda
+                          style: TextStyle(
+                            // estilo do texto dentro do input, o que o usuário digita
+                            color: Theme.of(context).primaryColor,
+                            fontSize: 20,
+                          ),
+                          validator: (value) {
+                            // Validação de formulário
+                            if (value != null && value.isEmpty) {
+                              return "Invalid E-mail";
+                            }
+
+                            return null;
+                          },
+                          onSaved: (input) => _email =
+                              input, // função chamada após sair do teclado
+                        ),
+                        const SizedBox(
+                          // Somente para espaçamento entre os itens
+                          height: 10.0,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.text,
+                          obscureText: true, // deixa a senha escondida
+                          decoration: InputDecoration(
+                            labelText: "Password",
+                            labelStyle: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontSize: 20,
+                          ),
+                          validator: (value) {
+                            // Validação de formulário
+                            if (value != null && value.isEmpty) {
+                              return "Invalid E-mail";
+                            }
+
+                            return null;
+                          },
+                          onSaved: (input) => _password = input,
+                        ),
+                        Container(
+                          alignment: Alignment
+                              .centerRight, // Alinha os itens dentro do container
+                          height: 40,
+                          child: TextButton(
+                            onPressed: () {},
                             child: Text(
-                              "Sign Up",
+                              "Forgot your password?",
                               style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                               ),
                             ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(5),
+                            ),
+                          ),
+                          child: TextButton(
+                            child: const Text(
+                              "Sign in",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SignupPage(),
-                                ),
-                              );
+                              if (_formKey.currentState != null &&
+                                  _formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+                                print(_email);
+                                print(_password);
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text("Welcome , $_email"),
+                                  ),
+                                );
+                              }
                             },
                           ),
-                        ],
-                      ),
-                      const SizedBox(
-                        // Somente para espaçamento entre os itens
-                        height: 45.0,
-                      ),
-                      TextFormField(
-                        // autofocus: true, // já abre a página selecionado
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          // decorações do input
-                          labelText: "Email",
-                          labelStyle: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16.0,
-                          ),
                         ),
-                        style: TextStyle(
-                          // estilo do texto dentro do input, o que o usuário digita
-                          color: Theme.of(context).primaryColor,
-                          fontSize: 20,
-                        ),
-                      ),
-                      const SizedBox(
-                        // Somente para espaçamento entre os itens
-                        height: 10.0,
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        obscureText: true, // deixa a senha escondida
-                        decoration: InputDecoration(
-                          labelText: "Password",
-                          labelStyle: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontSize: 20,
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment
-                            .centerRight, // Alinha os itens dentro do container
-                        height: 40,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Forgot your password?",
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(5),
-                          ),
-                        ),
-                        child: TextButton(
-                          child: const Text(
-                            "Sign in",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
