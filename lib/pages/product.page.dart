@@ -27,10 +27,13 @@ class ProductPage extends StatelessWidget {
               flexibleSpace: FlexibleSpaceBar(
                 // Faz o efeito sanfona, diminuindo e aumentando
                 centerTitle: true,
-                background: Image.asset(
-                  image,
-                  width: double.infinity,
-                  fit: BoxFit.fitWidth,
+                background: Hero(
+                  tag: image, // a mesma tag do product-card
+                  child: Image.asset(
+                    image,
+                    width: double.infinity,
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ),
             ),
