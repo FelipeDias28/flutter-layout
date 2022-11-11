@@ -14,6 +14,8 @@ class _SearchBoxState extends State<SearchBox>
   AnimationController? _controller;
   // Sempre que trabalhar com Animação, não esquecer de iniciar e fazer o dispose
 
+  bool menuOpened = false;
+
   @override
   void initState() {
     super.initState();
@@ -34,42 +36,25 @@ class _SearchBoxState extends State<SearchBox>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: 20),
-      height: 60,
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.1),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(128),
-        ),
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.search),
-          Container(
-            width: 300,
-            padding: const EdgeInsets.only(left: 10),
-            child: TextFormField(
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                // decorações do input
-                border: InputBorder.none,
-                labelText: "Search....",
-                labelStyle: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 16.0,
-                ),
-              ),
-              style: const TextStyle(
-                // estilo do texto dentro do input, o que o usuário digita
-                fontSize: 20,
-              ),
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text("Search"),
+        TextButton(
+          onPressed: () {
+            !menuOpened ? _controller?.forward() : _controller?.reverse();
+            // forward => vai para frente
+            // reverse => retorna a animação
+
+            menuOpened = !menuOpened;
+          },
+          child: AnimatedIcon(
+            icon: AnimatedIcons.menu_close,
+            progress: _controller!,
+            semanticLabel: "Menu Opened",
           ),
-        ],
-      ),
+        )
+      ],
     );
-    ;
   }
 }
