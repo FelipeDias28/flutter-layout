@@ -61,6 +61,55 @@ class AnimatedInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return AnimatedBuilder(
+      builder: _animate,
+      animation: controller,
+    );
+  }
+
+  Widget _animate(context, child) {
+    return Container(
+      height: 60,
+      decoration: BoxDecoration(
+        color: containerColorAnim.value, // Usa o valor da animação
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            containerBorderRadiusAnim.value,
+          ),
+        ),
+      ),
+      margin: const EdgeInsets.all(5.0),
+      width: containerSizeAnim.value,
+      child: Opacity(
+        // Opacidade como um filho do Container, e não pegando o container como um todo
+        opacity: conatinerOpacityAnim.value,
+        child: Row(
+          children: [
+            const SizedBox(width: 20),
+            const Icon(Icons.search),
+            const SizedBox(width: 20),
+            SizedBox(
+              width: 200,
+              child: TextFormField(
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  labelText: "Search...",
+                  labelStyle: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.w300,
+                    fontSize: 16,
+                  ),
+                ),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
